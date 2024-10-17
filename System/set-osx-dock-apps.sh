@@ -9,6 +9,7 @@ DOCK_APPS=(
   "Spotify"
   # "Postico 2"
   "iTerm"
+  "Xmind"
   "Notes"
   "Reminders"
 )
