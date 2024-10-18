@@ -1,6 +1,6 @@
 #!/bin/bash
 
-fonts = (
+fonts=(
   font-3270-nerd-font
   font-fira-mono-nerd-font
   font-inconsolata-go-nerd-font
