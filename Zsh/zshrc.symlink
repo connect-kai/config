@@ -32,3 +32,6 @@ source $CONFIG/**/aliases.sh
 
 # Load .localrc for SUPER SECRET STUFF (at the end)
 [[ -a ~/.localrc ]] && source ~/.localrc
+
+# FVM
+[[ -f  $HOME/.dart-cli-completion/zsh-config.zsh ]] && . $HOME/.dart-cli-completion/zsh-config.zsh || true

@@ -6,6 +6,7 @@
 
 # Set up important taps
 brew tap homebrew/cask-fonts
+brew tap leoafarias/fvm
 
 # Install binaries
 brew install zsh
@@ -17,6 +18,9 @@ brew install ripgrep
 # NVM
 brew install nvm
 source $(brew --prefix nvm)/nvm.sh
+
+# FVM
+brew install fvm
 
 # Vim
 brew install neovim
