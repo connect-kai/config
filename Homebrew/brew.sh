@@ -39,6 +39,7 @@ brew install --cask iterm2
 brew install --cask docker
 brew install --cask orbstack
 brew install --cask sequel-ace
+brew install --cask cursor
 
 # Keyboard
 brew install --cask karabiner-elements
