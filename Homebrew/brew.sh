@@ -38,7 +38,8 @@ brew install --cask wechat
 brew install --cask iterm2
 brew install --cask docker
 brew install --cask orbstack
-brew install --cask sequel-ace
+brew install --cask tableplus
+brew install --cask beyond-compare
 brew install --cask cursor
 
 # Keyboard
