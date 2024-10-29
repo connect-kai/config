@@ -15,3 +15,6 @@ alias lockscreen='pmset displaysleepnow'
 # Reload settings or hardware
 alias reload!="source $zshrc"
 alias reload="echo 'Use \"reload!\" instead'"
+
+# For Flutter exec
+export CHROME_EXECUTABLE="/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge"
