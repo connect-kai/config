@@ -25,6 +25,9 @@ brew install fvm
 # Vim
 brew install neovim
 
+# AltTab https://github.com/lwouis/alt-tab-macos
+brew install --cask alt-tab
+
 # Install Apps
 brew install --cask 1password
 brew install --cask 1password-cli
