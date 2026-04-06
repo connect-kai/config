@@ -1,0 +1,7 @@
+# Rime custom phrases
+# Format:
+# phrase<Tab>shortcut<Tab>weight
+
+Subanana	sub	100
+GitLab	gl	100
+Proton Pass	pp	100

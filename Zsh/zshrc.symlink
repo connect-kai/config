@@ -1,7 +1,11 @@
 # Paths and Variables
 export ZSH=$HOME/.oh-my-zsh
-export zshrc="$HOME/.zshrc"
-export config=$HOME/Config
+export zshrc="${(%):-%x}"
+if [[ -L "$zshrc" ]]; then
+  zshrc="$(readlink "$zshrc")"
+fi
+export zshrc="${zshrc:A}"
+export config="${zshrc:h:h}"
 export CONFIG=$config
 
 # Language fix
@@ -17,9 +21,31 @@ COMPLETION_WAITING_DOTS="true"
 # Load Oh-My-Zsh
 source $ZSH/oh-my-zsh.sh
 
+# Keep the default robbyrussell layout, but swap the leading arrow for a cap.
+PROMPT="%(?:%{$fg_bold[green]%}🧢 :%{$fg_bold[red]%}🧢 ) %{$fg[cyan]%}%c %{$reset_color%}"
+
 # NVM Configs
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+export NVM_DEFAULT_NODE="24.7.0"
+command -v nvm >/dev/null 2>&1 && nvm use --silent "$NVM_DEFAULT_NODE" >/dev/null 2>&1 || true
+
+# direnv
+command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
+
+# Rust / Cargo
+export CARGO_HOME="${CARGO_HOME:-$HOME/.cargo}"
+export RUSTUP_HOME="${RUSTUP_HOME:-$HOME/.rustup}"
+if command -v brew >/dev/null 2>&1; then
+  rustup_prefix="$(brew --prefix rustup 2>/dev/null || true)"
+  if [[ -n "$rustup_prefix" ]]; then
+    export PATH="$rustup_prefix/bin:$CARGO_HOME/bin:$PATH"
+  else
+    export PATH="$CARGO_HOME/bin:$PATH"
+  fi
+else
+  export PATH="$CARGO_HOME/bin:$PATH"
+fi
 
 # BUN Configs
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
@@ -30,19 +56,5 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 typeset -U aliases
 source $CONFIG/**/aliases.sh
 
-# Load .localrc for SUPER SECRET STUFF (at the end)
+# Load .localrc for local overrides (at the end)
 [[ -a ~/.localrc ]] && source ~/.localrc
-
-# FVM
-[[ -f  $HOME/.dart-cli-completion/zsh-config.zsh ]] && . $HOME/.dart-cli-completion/zsh-config.zsh || true
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-# pnpm
-export PNPM_HOME="/Users/kai/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end

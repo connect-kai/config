@@ -4,14 +4,14 @@ set -e
 
 # Apps to pin to dock
 DOCK_APPS=(
-  "Microsoft Edge"
-  "1Password"
+  "Google Chrome"
+  "Proton Pass"
+  "Superset"
+  "Visual Studio Code"
+  "TablePlus"
+  "Linear"
+  "Discord"
   "Spotify"
-  # "Postico 2"
-  "iTerm"
-  "Xmind"
-  "Notes"
-  "Reminders"
 )
 
 # Paths to search for apps

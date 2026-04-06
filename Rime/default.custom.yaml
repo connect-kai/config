@@ -1,0 +1,23 @@
+patch:
+  menu/page_size: 5
+
+  schema_list:
+    - schema: luna_pinyin
+    - schema: jyut6ping3
+    - schema: stroke
+
+  switcher/hotkeys:
+    - Control+grave
+
+  switcher/save_options:
+    - ascii_mode
+    - ascii_punct
+    - full_shape
+    - simplification
+
+  ascii_composer/switch_key:
+    Caps_Lock: clear
+    Shift_L: commit_code
+    Shift_R: commit_code
+    Control_L: noop
+    Control_R: noop

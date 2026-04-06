@@ -1,0 +1,79 @@
+#!/bin/zsh
+
+# Local shell overrides.
+# This file is copied to ~/.localrc by Zsh/create-localrc.sh.
+# Put machine-specific aliases, env vars, and secrets here.
+
+unalias proxy unproxy >/dev/null 2>&1 || true
+
+# Proton Pass SSH agent
+export SSH_AUTH_SOCK="$HOME/.ssh/proton-pass-agent.sock"
+export PASS_CLI_SSH_VAULT_NAME="ssh"
+
+pagent() {
+  mkdir -p "$HOME/.ssh" "$HOME/Library/Logs"
+
+  if SSH_AUTH_SOCK="$SSH_AUTH_SOCK" ssh-add -l >/dev/null 2>&1; then
+    return 0
+  fi
+
+  rm -f "$SSH_AUTH_SOCK"
+
+  nohup pass-cli ssh-agent start --vault-name "$PASS_CLI_SSH_VAULT_NAME" --refresh-interval 30 \
+    >"$HOME/Library/Logs/pass-cli-ssh-agent.log" 2>&1 &
+
+  disown
+  sleep 1
+}
+
+pagent_restart() {
+  pkill -f "pass-cli ssh-agent start --vault-name $PASS_CLI_SSH_VAULT_NAME" >/dev/null 2>&1 || true
+  rm -f "$SSH_AUTH_SOCK"
+  pagent
+}
+
+alias pa='pagent'
+alias par='pagent_restart'
+
+ssh() {
+  pagent
+  command ssh "$@"
+}
+
+scp() {
+  pagent
+  command scp "$@"
+}
+
+sftp() {
+  pagent
+  command sftp "$@"
+}
+
+rsync() {
+  pagent
+  command rsync "$@"
+}
+
+git() {
+  case "${1:-}" in
+    clone|fetch|pull|push|submodule|ls-remote|commit|merge|rebase|cherry-pick)
+      pagent
+      ;;
+  esac
+
+  command git "$@"
+}
+
+# Proxy helpers
+function proxy {
+  export https_proxy="http://127.0.0.1:6152"
+  export http_proxy="http://127.0.0.1:6152"
+  export all_proxy="socks5://127.0.0.1:6153"
+}
+
+function unproxy {
+  unset all_proxy http_proxy https_proxy
+}
+
+# Add more local-only settings below.

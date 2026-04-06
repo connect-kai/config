@@ -1,14 +1,9 @@
 # Homebrew
 
-> [Homebrew](http://brew.sh/), the nectar of the OSX Gods
+Install Homebrew first by following the official instructions at [brew.sh](https://brew.sh).
 
-### Installation
-
-Use the official installation instructions.
-
-### Install binaries, apps and fonts
+## Install packages and apps
 
 ```bash
-source ~/Config/Homebrew/brew.sh
-source ~/Config/Homebrew/fonts.sh
+bash ~/Developer/config/Homebrew/brew.sh
 ```

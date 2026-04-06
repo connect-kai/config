@@ -1,0 +1,26 @@
+patch:
+  us_keyboard_layout: true
+  show_notifications_when: appropriate
+
+  style:
+    color_scheme: clean_white
+    inline_preedit: true
+    candidate_format: "%c. %@"
+    corner_radius: 8
+    border_height: 6
+    border_width: 8
+    spacing: 8
+    line_spacing: 6
+    font_face: "PingFang SC"
+    font_point: 16
+    label_font_face: "SF Pro"
+    label_font_point: 12
+    horizontal: true
+
+  app_options:
+    com.microsoft.VSCode:
+      ascii_mode: true
+    com.apple.Terminal:
+      ascii_mode: true
+    com.mitchellh.ghostty:
+      ascii_mode: true
