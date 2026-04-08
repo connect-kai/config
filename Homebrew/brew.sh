@@ -31,7 +31,7 @@ brew install glab
 brew install mole
 brew install rustup
 brew install protonpass/tap/pass-cli
-brew install --cask mactex-no-gui
+#brew install --cask mactex-no-gui
 brew install --cask temurin@17
 
 # Rust / Cargo
@@ -40,14 +40,10 @@ brew install --cask temurin@17
 # Git LFS
 git lfs install
 
-# NVM
-brew install nvm
-source $(brew --prefix nvm)/nvm.sh
-NVM_DEFAULT_NODE="24.7.0"
-nvm install "$NVM_DEFAULT_NODE"
-nvm alias default "$NVM_DEFAULT_NODE"
-nvm use "$NVM_DEFAULT_NODE"
-unset NVM_DEFAULT_NODE
+# mise
+brew install mise
+mise use --global node@24
+mise use --global yarn@latest
 
 # Zsh
 bash "$CONFIG_DIR/Zsh/install.sh"

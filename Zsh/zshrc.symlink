@@ -24,11 +24,8 @@ source $ZSH/oh-my-zsh.sh
 # Keep the default robbyrussell layout, but swap the leading arrow for a cap.
 PROMPT="%(?:%{$fg_bold[green]%}🧢 :%{$fg_bold[red]%}🧢 ) %{$fg[cyan]%}%c %{$reset_color%}"
 
-# NVM Configs
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
-export NVM_DEFAULT_NODE="24.7.0"
-command -v nvm >/dev/null 2>&1 && nvm use --silent "$NVM_DEFAULT_NODE" >/dev/null 2>&1 || true
+# mise
+command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh)"
 
 # direnv
 command -v direnv >/dev/null 2>&1 && eval "$(direnv hook zsh)"
