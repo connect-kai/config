@@ -19,6 +19,7 @@ bash "$CONFIG_DIR/Zsh/install.sh"
 bash "$CONFIG_DIR/Zsh/create-localrc.sh"
 bash "$CONFIG_DIR/SSH/create-config.sh"
 bash "$CONFIG_DIR/Tmux/install.sh"
+bash "$CONFIG_DIR/Worktrunk/install.sh"
 
 cat <<EOF
 Done.

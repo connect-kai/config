@@ -55,3 +55,6 @@ source $CONFIG/**/aliases.sh
 
 # Load .localrc for local overrides (at the end)
 [[ -a ~/.localrc ]] && source ~/.localrc
+
+# Created by `pipx` on 2026-04-10 17:53:05
+export PATH="$PATH:/Users/kai/.local/bin"

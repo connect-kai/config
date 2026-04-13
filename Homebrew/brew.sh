@@ -30,6 +30,7 @@ brew install bun
 brew install glab
 brew install mole
 brew install rustup
+brew install worktrunk
 brew install protonpass/tap/pass-cli
 #brew install --cask mactex-no-gui
 brew install --cask temurin@17
