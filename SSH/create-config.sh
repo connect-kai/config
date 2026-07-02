@@ -16,3 +16,10 @@ fi
 
 cp "$TEMPLATE_FILE" "$TARGET_FILE"
 chmod 600 "$TARGET_FILE"
+
+# Proton Pass SSH agent as a launchd-supervised service (auto-start, auto-restart)
+PLIST_TARGET="$HOME/Library/LaunchAgents/me.proton.pass.ssh-agent.plist"
+mkdir -p "$HOME/Library/LaunchAgents" "$HOME/Library/Logs"
+sed "s|__HOME__|$HOME|g" "$CONFIG_DIR/me.proton.pass.ssh-agent.plist.template" > "$PLIST_TARGET"
+launchctl bootout "gui/$(id -u)/me.proton.pass.ssh-agent" 2>/dev/null || true
+launchctl bootstrap "gui/$(id -u)" "$PLIST_TARGET"
