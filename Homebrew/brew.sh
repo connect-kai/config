@@ -10,6 +10,8 @@ CONFIG_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 # Set up important taps
 brew tap oven-sh/bun
+brew trust --tap abue-ammar/tinycast
+brew tap abue-ammar/tinycast
 
 # Install binaries
 brew install zsh
@@ -64,7 +66,7 @@ brew install --cask microsoft-word
 brew install --cask discord
 brew install --cask linear-linear
 brew install --cask vlc
-brew install --cask raycast
+brew install --cask tinycast
 
 # Dev Apps
 brew install --cask orbstack
